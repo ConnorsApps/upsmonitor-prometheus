@@ -1,0 +1,17 @@
+Properties:
+	Model Name................... ST Series
+	Firmware Number.............. BF02121ACA1.z
+	Rating Voltage............... 120 V
+	Rating Power................. 510 Watt
+
+Current UPS status:
+	State........................ Normal
+	Power Supply by.............. Utility Power
+	Utility Voltage.............. 122 V
+	Output Voltage............... 122 V
+	Battery Capacity............. 100 %
+	Remaining Runtime............ 143 min.
+	Load......................... 0 Watt(0 %)
+	Line Interaction............. None
+	Test Result.................. Unknown
+	Last Power Event............. None
