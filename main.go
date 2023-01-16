@@ -2,9 +2,12 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 
-	"github.com/ConnorsApps/upsmonitor-prometheus/command"
+	"github.com/ConnorsApps/upsmonitor-prometheus/utils"
+	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
 func health(w http.ResponseWriter, _ *http.Request) {
@@ -12,15 +15,12 @@ func health(w http.ResponseWriter, _ *http.Request) {
 }
 
 func main() {
-	// collector := utils.Collector()
-	// prometheus.MustRegister(collector)
+	collector := utils.Collector()
+	prometheus.MustRegister(collector)
 
-	status := command.Run()
-	fmt.Println("status", status)
+	fmt.Println("Listening at localhost:" + utils.PORT + utils.METRICS_ENDPOINT)
+	http.Handle(utils.METRICS_ENDPOINT, promhttp.Handler())
+	http.Handle("/health", http.HandlerFunc(health))
 
-	// fmt.Println("Listening at localhost:" + utils.PORT + utils.METRICS_ENDPOINT)
-	// http.Handle(utils.METRICS_ENDPOINT, promhttp.Handler())
-	// http.Handle("/health", http.HandlerFunc(health))
-
-	// log.Panicln(http.ListenAndServe(":"+utils.PORT, nil))
+	log.Panicln(http.ListenAndServe(":"+utils.PORT, nil))
 }

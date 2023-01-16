@@ -1,7 +1,8 @@
-package command
+package utils
 
 import (
-	"os"
+	"log"
+	"os/exec"
 	"strings"
 )
 
@@ -22,6 +23,22 @@ type PowerstatStatus struct {
 	LastPowerEvent   string
 }
 
+func command() string {
+	out, err := exec.Command("pwrstat", "-status").Output()
+
+	if err != nil {
+		log.Panicln("Unable to run command", err)
+	}
+
+	// ---- Test result locally ----
+	// out, err := os.ReadFile("./example/command-output")
+	// if err != nil {
+	// 	panic(err)
+	// }
+
+	return string(out)
+}
+
 // Model Name................... ST Series
 func labelValue(output string, label string) string {
 	afterLabel := strings.Split(output, label)[1]
@@ -30,20 +47,7 @@ func labelValue(output string, label string) string {
 	return dotsRemoved
 }
 
-func command() string {
-	// out, err := exec.Command("pwrstat", "-status").Output()
-
-	// if err != nil {
-	// 	log.Panicln("Unable to run command", err)
-	// }
-	out, err := os.ReadFile("./example/command-output")
-	if err != nil {
-		panic(err)
-	}
-	return string(out)
-}
-
-func pwrstatStatus() PowerstatStatus {
+func RunCommand() PowerstatStatus {
 	output := command()
 
 	split := strings.Split(output, "Current UPS status")
