@@ -58,52 +58,50 @@ func (collector *MetricCollector) Describe(ch chan<- *prometheus.Desc) {
 
 }
 func Collector() *MetricCollector {
-	namespace := "hass_health"
-
 	properties := prometheus.NewGaugeVec(prometheus.GaugeOpts{
-		Namespace: namespace,
+		Namespace: NAMESPACE,
 		Name:      "properties",
 		Help:      "properties",
 	}, []string{"ModelName", "FirmwareNumber", "RatingVoltage", "RatingPowerWatt"})
 
 	state := prometheus.NewGaugeVec(prometheus.GaugeOpts{
-		Namespace: namespace,
+		Namespace: NAMESPACE,
 		Name:      "state",
 		Help:      "state",
 	}, []string{"State", "PowerSupplyBy", "LineInteraction", "TestResult", "LastPowerEvent"})
 
 	utilityVoltage := prometheus.NewGaugeVec(prometheus.GaugeOpts{
-		Namespace: namespace,
+		Namespace: NAMESPACE,
 		Name:      "utilityVoltage",
 		Help:      "utilityVoltage",
 	}, []string{})
 
 	remainingRuntimeSeconds := prometheus.NewGaugeVec(prometheus.GaugeOpts{
-		Namespace: namespace,
+		Namespace: NAMESPACE,
 		Name:      "remainingRuntimeSeconds",
 		Help:      "remainingRuntimeSeconds",
 	}, []string{})
 
 	outputVoltage := prometheus.NewGaugeVec(prometheus.GaugeOpts{
-		Namespace: namespace,
+		Namespace: NAMESPACE,
 		Name:      "outputVoltage",
 		Help:      "outputVoltage",
 	}, []string{})
 
 	batteryCapacityPercent := prometheus.NewGaugeVec(prometheus.GaugeOpts{
-		Namespace: namespace,
+		Namespace: NAMESPACE,
 		Name:      "batteryCapacityPercent",
 		Help:      "batteryCapacityPercent",
 	}, []string{})
 
 	loadWatt := prometheus.NewGaugeVec(prometheus.GaugeOpts{
-		Namespace: namespace,
+		Namespace: NAMESPACE,
 		Name:      "loadWatt",
 		Help:      "loadWatt",
 	}, []string{})
 
 	loadPercent := prometheus.NewGaugeVec(prometheus.GaugeOpts{
-		Namespace: namespace,
+		Namespace: NAMESPACE,
 		Name:      "loadPercent",
 		Help:      "loadPercent",
 	}, []string{})
