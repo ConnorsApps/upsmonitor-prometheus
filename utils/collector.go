@@ -72,37 +72,37 @@ func Collector() *MetricCollector {
 
 	utilityVoltage := prometheus.NewGaugeVec(prometheus.GaugeOpts{
 		Namespace: NAMESPACE,
-		Name:      "utilityVoltage",
+		Name:      "utility_voltage",
 		Help:      "utilityVoltage",
 	}, []string{})
 
 	remainingRuntimeSeconds := prometheus.NewGaugeVec(prometheus.GaugeOpts{
 		Namespace: NAMESPACE,
-		Name:      "remainingRuntimeSeconds",
+		Name:      "remaining_runtime_seconds",
 		Help:      "remainingRuntimeSeconds",
 	}, []string{})
 
 	outputVoltage := prometheus.NewGaugeVec(prometheus.GaugeOpts{
 		Namespace: NAMESPACE,
-		Name:      "outputVoltage",
+		Name:      "output_voltage",
 		Help:      "outputVoltage",
 	}, []string{})
 
 	batteryCapacityPercent := prometheus.NewGaugeVec(prometheus.GaugeOpts{
 		Namespace: NAMESPACE,
-		Name:      "batteryCapacityPercent",
+		Name:      "battery_capacity_percent",
 		Help:      "batteryCapacityPercent",
 	}, []string{})
 
 	loadWatt := prometheus.NewGaugeVec(prometheus.GaugeOpts{
 		Namespace: NAMESPACE,
-		Name:      "loadWatt",
+		Name:      "load_watt",
 		Help:      "loadWatt",
 	}, []string{})
 
 	loadPercent := prometheus.NewGaugeVec(prometheus.GaugeOpts{
 		Namespace: NAMESPACE,
-		Name:      "loadPercent",
+		Name:      "load_percent",
 		Help:      "loadPercent",
 	}, []string{})
 
