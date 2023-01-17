@@ -1,0 +1,8 @@
+[Unit]
+Description=Upsmonitor Metrics Exporter
+After=pulseaudio.service
+[Service]
+Restart=on-failure
+ExecStart=/root/upsmonitor/upsmonitor-prometheus
+User=root
+Group=root
